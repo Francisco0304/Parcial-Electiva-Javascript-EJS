@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%-include('./templates/header.ejs')%>
+    <body>
+        <div class="container">
+            <h1>Lista de Productos</h1>
+            <% if (Object.keys(data).length > 0) { %>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Descripción</th>
+                        <th>Stock</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (const code in data) { %>
+                    <tr>
+                        <td><%= code %></td>
+                        <td><%= data[code].description %></td>
+                        <td><%= data[code].stock %></td>
+                        <td><%= data[code].value %></td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+            <% } else { %>
+            <h2>No hay productos disponibles</h2>
+            <% } %>
+            <a href="/add-product" class="btn-primary btn">Nuevo Producto</a>
+        </div>
+        <%-include('./templates/footer.ejs')%>
+    </body>
+</html>
+
